@@ -1,0 +1,138 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import '@/components/WebComponentLoader';
+import { getPackageInstructions } from '@/lib/packageInstructions';
+
+const packageName = import.meta.env.PUBLIC_WEB_COMPONENTS_PACKAGE;
+const instructions = getPackageInstructions(packageName);
+---
+
+<BaseLayout
+  title="Astro Web Components Starter"
+  description="Astro-Starter mit TypeScript, ESLint, Prettier, Vitest und GitHub Packages Support."
+>
+  <main class="hero">
+    <section class="card stack">
+      <p class="eyebrow">Astro + TypeScript + Tooling</p>
+      <h1>Starter für Web Components aus GitHub Packages</h1>
+      <p class="lead">
+        Dieses Projekt ist vorbereitet, um veröffentlichte Web Components als npm-Paket über
+        GitHub Packages zu installieren und in Astro zu verwenden.
+      </p>
+
+      <div class="notice">
+        <strong>{instructions.headline}</strong>
+        <p>{instructions.body}</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          Kopiere <code>.env.example</code> nach <code>.env</code> sowie <code>.npmrc.example</code>
+          nach <code>.npmrc</code> und setze <code>GITHUB_TOKEN_PACKAGES</code>.
+        </li>
+        <li>
+          Installiere dein Paket, z. B.
+          <code>npm install @your-org/web-components</code>.
+        </li>
+        <li>
+          Ergänze den Import in <code>src/components/WebComponentLoader.ts</code>, damit die Custom
+          Elements registriert werden.
+        </li>
+      </ol>
+    </section>
+
+    <section class="card stack">
+      <h2>Beispiel für die Verwendung</h2>
+      <p>
+        Sobald dein Paket importiert ist, kannst du die registrierten Tags direkt im Astro-Markup
+        nutzen.
+      </p>
+      <pre><code>{`---
+import '@/components/WebComponentLoader';
+---
+
+<my-button label="Hallo GitHub Packages"></my-button>`}</code></pre>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero {
+    width: min(1100px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: 4rem 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  }
+
+  .stack > * + * {
+    margin-top: 1rem;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #38bdf8;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  p,
+  ol {
+    margin: 0;
+  }
+
+  .lead {
+    max-width: 60ch;
+    line-height: 1.6;
+    color: #cbd5e1;
+  }
+
+  .notice {
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(125, 211, 252, 0.25);
+  }
+
+  .notice p {
+    margin-top: 0.4rem;
+  }
+
+  .steps {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.75rem;
+    color: #cbd5e1;
+  }
+
+  code,
+  pre {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  pre {
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: 16px;
+    background: rgba(2, 6, 23, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: start;
+    }
+  }
+</style>
