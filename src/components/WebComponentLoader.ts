@@ -1,8 +1,6 @@
-/**
- * Importiere hier dein veröffentlichtes Package aus GitHub Packages,
- * damit die Custom Elements beim Laden der Seite registriert werden.
- *
- * Beispiel:
- * import '@your-org/web-components';
+/*
+ * This module is loaded only in the browser.
+ * Importing the package registers its custom elements globally,
+ * so Astro pages can use <wc-accordion> directly in their markup.
  */
-export {};
+import '@mhauens/accordion';

@@ -1,23 +1,26 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import '@/components/WebComponentLoader';
 import { getPackageInstructions } from '@/lib/packageInstructions';
 
-const packageName = import.meta.env.PUBLIC_WEB_COMPONENTS_PACKAGE;
+const packageName = import.meta.env.PUBLIC_WEB_COMPONENTS_PACKAGE ?? '@mhauens/accordion';
 const instructions = getPackageInstructions(packageName);
 ---
 
+<script>
+  import '@/components/WebComponentLoader';
+</script>
+
 <BaseLayout
-  title="Astro Web Components Starter"
-  description="Astro-Starter mit TypeScript, ESLint, Prettier, Vitest und GitHub Packages Support."
+  title="Astro Accordion Demo"
+  description="Startseite mit der Web Component @mhauens/accordion in einem Astro-Projekt."
 >
   <main class="hero">
     <section class="card stack">
-      <p class="eyebrow">Astro + TypeScript + Tooling</p>
-      <h1>Starter für Web Components aus GitHub Packages</h1>
+      <p class="eyebrow">Astro + Web Components</p>
+      <h1>Accordion-Komponente direkt auf der Startseite</h1>
       <p class="lead">
-        Dieses Projekt ist vorbereitet, um veröffentlichte Web Components als npm-Paket über
-        GitHub Packages zu installieren und in Astro zu verwenden.
+        Die Komponente <code>{packageName}</code> wird beim Laden der Seite registriert und kann
+        danach direkt im Astro-Markup verwendet werden.
       </p>
 
       <div class="notice">
@@ -27,31 +30,52 @@ const instructions = getPackageInstructions(packageName);
 
       <ol class="steps">
         <li>
-          Kopiere <code>.env.example</code> nach <code>.env</code> sowie <code>.npmrc.example</code>
-          nach <code>.npmrc</code> und setze <code>GITHUB_TOKEN_PACKAGES</code>.
+          Die Registrierung läuft in einem Browser-Script, das
+          <code>src/components/WebComponentLoader.ts</code> lädt.
         </li>
         <li>
-          Installiere dein Paket, z. B.
-          <code>npm install @your-org/web-components</code>.
+          Danach kannst du <code>&lt;wc-accordion&gt;</code> wie jedes andere HTML-Tag direkt in
+          Astro einsetzen.
         </li>
         <li>
-          Ergänze den Import in <code>src/components/WebComponentLoader.ts</code>, damit die Custom
-          Elements registriert werden.
+          Inhalte für den aufgeklappten Bereich kommen per Slot aus dem umgebenden Markup.
         </li>
       </ol>
     </section>
 
     <section class="card stack">
-      <h2>Beispiel für die Verwendung</h2>
+      <h2>Live-Beispiel</h2>
       <p>
-        Sobald dein Paket importiert ist, kannst du die registrierten Tags direkt im Astro-Markup
-        nutzen.
+        Die erste Accordion-Instanz startet geöffnet, die zweite geschlossen.
       </p>
+
+      <div class="demo stack">
+        <wc-accordion heading="Was ist @mhauens/accordion?" open>
+          <p>
+            Eine als npm-Paket veröffentlichte Web Component, die sich nach dem Import selbst als
+            <code>wc-accordion</code> registriert.
+          </p>
+        </wc-accordion>
+
+        <wc-accordion heading="Wie verwende ich die Komponente in Astro?">
+          <p>
+            Importiere das Paket einmal zentral und nutze anschließend das Tag direkt in deinen
+            Astro-Dateien. Zusätzliche Wrapper oder Framework-spezifische Bindings sind nicht
+            nötig.
+          </p>
+        </wc-accordion>
+      </div>
+
       <pre><code>{`---
-import '@/components/WebComponentLoader';
 ---
 
-<my-button label="Hallo GitHub Packages"></my-button>`}</code></pre>
+<script>
+  import '@/components/WebComponentLoader';
+</script>
+
+<wc-accordion heading="Beispiel" open>
+  <p>Inhalt aus dem Astro-Markup</p>
+</wc-accordion>`}</code></pre>
     </section>
   </main>
 </BaseLayout>
@@ -98,6 +122,12 @@ import '@/components/WebComponentLoader';
     color: #cbd5e1;
   }
 
+  .lead code,
+  .steps code,
+  .demo code {
+    font-size: 0.95em;
+  }
+
   .notice {
     padding: 1rem 1.25rem;
     border-radius: 16px;
@@ -113,6 +143,16 @@ import '@/components/WebComponentLoader';
     padding-left: 1.25rem;
     display: grid;
     gap: 0.75rem;
+    color: #cbd5e1;
+  }
+
+  .demo {
+    gap: 0.75rem;
+  }
+
+  .demo p {
+    margin: 0;
+    line-height: 1.6;
     color: #cbd5e1;
   }
 
