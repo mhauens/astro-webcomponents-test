@@ -76,14 +76,14 @@ const instructions = getPackageInstructions(highlightedPackages);
       </p>
 
       <div class="demo stack">
-        <wc-accordion heading="Was ist @mhauens/accordion?" open>
+        <wc-accordion class="brand-accordion" heading="Was ist @mhauens/accordion?" open>
           <p>
             Eine als npm-Paket veröffentlichte Web Component, die sich nach dem Import selbst als
             <code>wc-accordion</code> registriert.
           </p>
         </wc-accordion>
 
-        <wc-accordion heading="Wie verwende ich die Komponente in Astro?">
+        <wc-accordion class="brand-accordion" heading="Wie verwende ich die Komponente in Astro?">
           <p>
             Importiere das Paket einmal zentral und nutze anschließend das Tag direkt in deinen
             Astro-Dateien. Zusätzliche Wrapper oder Framework-spezifische Bindings sind nicht
@@ -108,7 +108,7 @@ const instructions = getPackageInstructions(highlightedPackages);
   import '@/components/WebComponentLoader';
 </script>
 
-<wc-accordion heading="Beispiel" open>
+<wc-accordion class="brand-accordion" heading="Beispiel" open>
   <p>Inhalt aus dem Astro-Markup</p>
 </wc-accordion>
 
@@ -187,6 +187,41 @@ const instructions = getPackageInstructions(highlightedPackages);
 
   .demo {
     gap: 0.75rem;
+  }
+
+  .brand-accordion {
+    --wc-accordion-width: 100%;
+    --wc-accordion-border: 1px solid rgba(125, 211, 252, 0.28);
+    --wc-accordion-radius: 1.25rem;
+    --wc-accordion-background: linear-gradient(180deg, rgba(15, 23, 42, 0.96) 0%, rgba(15, 23, 42, 0.82) 100%);
+    --wc-accordion-shadow: 0 20px 40px rgba(2, 6, 23, 0.35);
+    --wc-accordion-color: #e2e8f0;
+    --wc-accordion-trigger-gap: 1.25rem;
+    --wc-accordion-trigger-padding: 1rem 1.25rem;
+    --wc-accordion-trigger-background: linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 41, 59, 0.92) 100%);
+    --wc-accordion-trigger-color: #f8fafc;
+    --wc-accordion-focus-outline: 3px solid rgba(56, 189, 248, 0.9);
+    --wc-accordion-focus-outline-offset: -2px;
+    --wc-accordion-icon-color: #7dd3fc;
+    --wc-accordion-panel-background: linear-gradient(180deg, rgba(14, 165, 233, 0.08) 0%, rgba(15, 23, 42, 0) 100%);
+    --wc-accordion-panel-padding: 0 1.25rem 1.1rem;
+    --wc-accordion-panel-color: #cbd5e1;
+  }
+
+  .brand-accordion::part(trigger) {
+    letter-spacing: 0.01em;
+  }
+
+  .brand-accordion::part(heading) {
+    font-size: 1rem;
+  }
+
+  .brand-accordion::part(body) {
+    line-height: 1.65;
+  }
+
+  .brand-accordion::part(icon) {
+    font-size: 1.15rem;
   }
 
   .toggle-demo {

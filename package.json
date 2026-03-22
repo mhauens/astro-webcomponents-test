@@ -17,8 +17,8 @@
     "test:run": "vitest run"
   },
   "dependencies": {
-    "@mhauens/accordion": "^0.1.1",
-    "@mhauens/toggle": "^1.0.0",
+    "@mhauens/accordion": "^0.2.0",
+    "@mhauens/toggle": "^1.1.0",
     "astro": "^6.0.8"
   },
   "devDependencies": {

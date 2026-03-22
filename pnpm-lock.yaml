@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@mhauens/accordion':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.2.0
+        version: 0.2.0
       '@mhauens/toggle':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.1.0
+        version: 1.1.0
       astro:
         specifier: ^6.0.8
         version: 6.0.8(rollup@4.59.1)(typescript@5.9.3)(yaml@2.8.3)
@@ -513,11 +513,11 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@mhauens/accordion@0.1.1':
-    resolution: {integrity: sha512-WW5eYZoLm6wi5ACNIULuiBn3N3hwE2dadY8S6Ic4+RnQCXjG49k1/RFZVTOS/VTK0qj/nvOndph1hZEpZioYtQ==, tarball: https://npm.pkg.github.com/download/@mhauens/accordion/0.1.1/118384a6e506bd0b1ef794b9d360da97a4f109c1}
+  '@mhauens/accordion@0.2.0':
+    resolution: {integrity: sha512-0w7cb3YogyvC4r3zBibfMnRv2D9+Vo6CVa0/3fLvU6Em1txV6MEVSI6tomff2aAH3+60DYxbf6lpyrR2qpj5HQ==, tarball: https://npm.pkg.github.com/download/@mhauens/accordion/0.2.0/2d24e882c38035c12a64b5f0af9864df6cf63b65}
 
-  '@mhauens/toggle@1.0.0':
-    resolution: {integrity: sha512-qLzOpHQSIEOJwKxQn1s+C68OQ2zN2HvuWxQHIgYo1YeO53WsbDpdwWY5RXcvymAMlHHaa0VPj0h41sm8ojbRxw==, tarball: https://npm.pkg.github.com/download/@mhauens/toggle/1.0.0/decdbfe9b4e1e1857741f4d21a674ca3cf0fae03}
+  '@mhauens/toggle@1.1.0':
+    resolution: {integrity: sha512-iJGygkSM/8632K8vVOGW6Fbm8hajj59ys72zOX0KM3P7f4vrjibSgm+UFU7HeUFyv2iRPxONDlCOrvcxLcml9w==, tarball: https://npm.pkg.github.com/download/@mhauens/toggle/1.1.0/67032f31d72da88bd4e641e4beb340b8332b033a}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2712,9 +2712,9 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@mhauens/accordion@0.1.1': {}
+  '@mhauens/accordion@0.2.0': {}
 
-  '@mhauens/toggle@1.0.0': {}
+  '@mhauens/toggle@1.1.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
