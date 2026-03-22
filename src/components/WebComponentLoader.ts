@@ -1,6 +1,7 @@
 /*
  * This module is loaded only in the browser.
- * Importing the package registers its custom elements globally,
- * so Astro pages can use <wc-accordion> directly in their markup.
+ * Importing the packages registers their custom elements globally,
+ * so Astro pages can use <wc-accordion> and <wc-toggle> directly in their markup.
  */
 import '@mhauens/accordion';
+import '@mhauens/toggle';

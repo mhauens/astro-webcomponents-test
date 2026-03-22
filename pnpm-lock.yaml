@@ -11,6 +11,9 @@ importers:
       '@mhauens/accordion':
         specifier: ^0.1.1
         version: 0.1.1
+      '@mhauens/toggle':
+        specifier: ^1.0.0
+        version: 1.0.0
       astro:
         specifier: ^6.0.8
         version: 6.0.8(rollup@4.59.1)(typescript@5.9.3)(yaml@2.8.3)
@@ -512,6 +515,9 @@ packages:
 
   '@mhauens/accordion@0.1.1':
     resolution: {integrity: sha512-WW5eYZoLm6wi5ACNIULuiBn3N3hwE2dadY8S6Ic4+RnQCXjG49k1/RFZVTOS/VTK0qj/nvOndph1hZEpZioYtQ==, tarball: https://npm.pkg.github.com/download/@mhauens/accordion/0.1.1/118384a6e506bd0b1ef794b9d360da97a4f109c1}
+
+  '@mhauens/toggle@1.0.0':
+    resolution: {integrity: sha512-qLzOpHQSIEOJwKxQn1s+C68OQ2zN2HvuWxQHIgYo1YeO53WsbDpdwWY5RXcvymAMlHHaa0VPj0h41sm8ojbRxw==, tarball: https://npm.pkg.github.com/download/@mhauens/toggle/1.0.0/decdbfe9b4e1e1857741f4d21a674ca3cf0fae03}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2707,6 +2713,8 @@ snapshots:
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
   '@mhauens/accordion@0.1.1': {}
+
+  '@mhauens/toggle@1.0.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

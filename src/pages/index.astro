@@ -2,25 +2,49 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPackageInstructions } from '@/lib/packageInstructions';
 
-const packageName = import.meta.env.PUBLIC_WEB_COMPONENTS_PACKAGE ?? '@mhauens/accordion';
-const instructions = getPackageInstructions(packageName);
+const packageNames = ['@mhauens/accordion', '@mhauens/toggle'];
+const configuredPackageName = import.meta.env.PUBLIC_WEB_COMPONENTS_PACKAGE;
+const highlightedPackages = configuredPackageName ? [configuredPackageName] : packageNames;
+const instructions = getPackageInstructions(highlightedPackages);
 ---
 
 <script>
   import '@/components/WebComponentLoader';
+
+  const connectToggleStatus = () => {
+    const toggle = document.querySelector('wc-toggle[data-demo-toggle]');
+    const status = document.querySelector<HTMLElement>('[data-toggle-status]');
+
+    if (!(toggle instanceof HTMLElement) || !status) {
+      return;
+    }
+
+    const syncStatus = () => {
+      status.textContent = toggle.hasAttribute('checked') ? 'aktiviert' : 'deaktiviert';
+    };
+
+    toggle.addEventListener('change', syncStatus);
+    syncStatus();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', connectToggleStatus, { once: true });
+  } else {
+    connectToggleStatus();
+  }
 </script>
 
 <BaseLayout
-  title="Astro Accordion Demo"
-  description="Startseite mit der Web Component @mhauens/accordion in einem Astro-Projekt."
+  title="Astro Web Components Demo"
+  description="Startseite mit den Web Components @mhauens/accordion und @mhauens/toggle in einem Astro-Projekt."
 >
   <main class="hero">
     <section class="card stack">
       <p class="eyebrow">Astro + Web Components</p>
-      <h1>Accordion-Komponente direkt auf der Startseite</h1>
+      <h1>Accordion und Toggle direkt auf der Startseite</h1>
       <p class="lead">
-        Die Komponente <code>{packageName}</code> wird beim Laden der Seite registriert und kann
-        danach direkt im Astro-Markup verwendet werden.
+        Die Pakete <code>{highlightedPackages.join(' + ')}</code> werden beim Laden der Seite
+        registriert und ihre Custom Elements stehen danach direkt im Astro-Markup bereit.
       </p>
 
       <div class="notice">
@@ -34,11 +58,12 @@ const instructions = getPackageInstructions(packageName);
           <code>src/components/WebComponentLoader.ts</code> lädt.
         </li>
         <li>
-          Danach kannst du <code>&lt;wc-accordion&gt;</code> wie jedes andere HTML-Tag direkt in
-          Astro einsetzen.
+          Danach kannst du <code>&lt;wc-accordion&gt;</code> und <code>&lt;wc-toggle&gt;</code>
+          wie jedes andere HTML-Tag direkt in Astro einsetzen.
         </li>
         <li>
-          Inhalte für den aufgeklappten Bereich kommen per Slot aus dem umgebenden Markup.
+          Inhalte für das Accordion und die Beschreibung des Toggles kommen per Slot aus dem
+          umgebenden Markup.
         </li>
       </ol>
     </section>
@@ -46,7 +71,8 @@ const instructions = getPackageInstructions(packageName);
     <section class="card stack">
       <h2>Live-Beispiel</h2>
       <p>
-        Die erste Accordion-Instanz startet geöffnet, die zweite geschlossen.
+        Das Accordion zeigt statische Inhalte, der Toggle aktualisiert zusätzlich live seinen
+        Status auf der Seite.
       </p>
 
       <div class="demo stack">
@@ -64,6 +90,15 @@ const instructions = getPackageInstructions(packageName);
             nötig.
           </p>
         </wc-accordion>
+
+        <div class="toggle-demo stack">
+          <wc-toggle data-demo-toggle label="Release-Updates" checked>
+            Benachrichtige mich, wenn neue Versionen der Web Components veröffentlicht werden.
+          </wc-toggle>
+          <p class="toggle-status">
+            Aktueller Status: <strong data-toggle-status>aktiviert</strong>
+          </p>
+        </div>
       </div>
 
       <pre><code>{`---
@@ -75,7 +110,11 @@ const instructions = getPackageInstructions(packageName);
 
 <wc-accordion heading="Beispiel" open>
   <p>Inhalt aus dem Astro-Markup</p>
-</wc-accordion>`}</code></pre>
+</wc-accordion>
+
+<wc-toggle label="Benachrichtigungen" checked>
+  Option direkt im Astro-Markup definieren
+</wc-toggle>`}</code></pre>
     </section>
   </main>
 </BaseLayout>
@@ -150,10 +189,21 @@ const instructions = getPackageInstructions(packageName);
     gap: 0.75rem;
   }
 
+  .toggle-demo {
+    padding: 1rem 1.25rem;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+  }
+
   .demo p {
     margin: 0;
     line-height: 1.6;
     color: #cbd5e1;
+  }
+
+  .toggle-status strong {
+    color: #7dd3fc;
   }
 
   code,

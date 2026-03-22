@@ -16,4 +16,11 @@ describe('getPackageInstructions', () => {
       body: 'Installiere @acme/ui und importiere dessen Web Components in src/components/WebComponentLoader.ts.',
     });
   });
+
+  it('returns combined guidance when multiple package names are provided', () => {
+    expect(getPackageInstructions(['@acme/ui', '@acme/toggle'])).toEqual({
+      headline: 'Bereit für @acme/ui + @acme/toggle',
+      body: 'Installiere @acme/ui, @acme/toggle und importiere deren Web Components in src/components/WebComponentLoader.ts.',
+    });
+  });
 });
