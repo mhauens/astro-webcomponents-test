@@ -13,7 +13,7 @@ Dieses Repository enthält einen minimalen Astro-Starter mit:
 ```bash
 cp .env.example .env
 cp .npmrc.example .npmrc
-npm install
+pnpm install
 ```
 
 Ergänze danach in `.env` deinen Wert für `GITHUB_TOKEN_PACKAGES`. `.npmrc` verwendet diesen Token automatisch für GitHub Packages.
@@ -24,7 +24,7 @@ Ergänze danach in `.env` deinen Wert für `GITHUB_TOKEN_PACKAGES`. `.npmrc` ver
 2. Installiere dein veröffentlichtes Paket:
 
    ```bash
-   npm install @your-org/web-components
+   pnpm install @your-org/web-components
    ```
 
 3. Trage in `.env` deinen GitHub Packages Token ein und hinterlege optional den Paketnamen:
@@ -48,9 +48,9 @@ Ergänze danach in `.env` deinen Wert für `GITHUB_TOKEN_PACKAGES`. `.npmrc` ver
 
 ## Scripts
 
-- `npm run dev` – lokaler Dev-Server
-- `npm run build` – Produktionsbuild
-- `npm run check` – Astro Type Check
-- `npm run lint` – ESLint
-- `npm run format` – Prettier Check
-- `npm run test:run` – Vitest ohne Watch-Modus
+- `pnpm dev` – lokaler Dev-Server
+- `pnpm build` – Produktionsbuild
+- `npm check` – Astro Type Check
+- `pnpm lint` – ESLint
+- `pnpm format` – Prettier Check
+- `pnpm test:run` – Vitest ohne Watch-Modus
